@@ -1,0 +1,132 @@
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Discord SoloQChallenge </title>
+    <script type="module" src="scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="images/soloq-logotipo1.png">
+    <link rel="stylesheet" href="app.css?v=1">
+    <link rel="stylesheet" href="main.css?v=18">
+  </head>
+  <body class="is-dark">
+    <div id="huro-app" class="app-wrapper">
+      <div class="app-overlay"></div>
+      <div class="pageloader is-full"></div>
+      <div class="infraloader is-full"></div>
+      <nav class="navbar mobile-navbar is-hidden-desktop is-hidden-tablet no-shadow" aria-label="main navigation">
+        <div class="container">
+          <div class="navbar-brand">
+            <div class="brand-start">
+              <!-- Izquierda -->
+            </div>
+            <a class="navbar-item is-brand">
+              <img class="light-image" src="images/soloq-logotipo1.png" alt="">
+              <img class="dark-image" src="images/soloq-logotipo1.png" alt="">
+            </a>
+            <div class="brand-end">
+              <!-- Derecha -->
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="webapp-navbar">
+        <div class="webapp-navbar-inner">
+          <div class="left">
+            <a class="brand">
+              <img class="light-image" src="images/soloq-logotipo1.png" alt="">
+              <img class="dark-image" src="images/soloq-logotipo1.png" alt="">
+            </a>
+            <div class="separator"></div>
+            <div class="dropdown project-dropdown dropdown-trigger is-spaced">
+              <span>
+                <h1 class="title is-5">Discord SoloQChallenge</h1>
+              </span>
+            </div>
+          </div>
+          <div class="center">
+            <div id="webapp-navbar-menu" class="centered-links">
+              <a class="centered-link is-active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay">
+                  <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
+                  <polygon points="12 15 17 21 7 21 12 15"></polygon>
+                </svg>
+                <span>Clasificación</span>
+              </a>
+            </div>
+          </div>
+          <div class="right">
+            <!-- Texto -->
+          </div>
+        </div>
+      </div>
+      <div class="view-wrapper is-webapp">
+        <div class="page-content-wrapper">
+          <div class="page-content is-relative">
+            <div class="page-content-inner">
+              <div class="personal-dashboard personal-dashboard-v1">
+                <div class="dashboard-body">
+                  <div class="column is-12">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                      <ul>
+                        <li>
+                          <a>
+                            <span id="quantityPlayers">10 jugadores</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>50€ en premios :O</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Liga de las Leyendas</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>04/12/2022 - 04/01/2023</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="columns is-multiline">
+                    <div class="table-wrapper" data-simplebar="init">
+                      <div class="simplebar-wrapper" style="margin: 0px;">
+                        <div id="tablaclasificacion_wrapper" class="dataTables_wrapper no-footer">
+                          <div class="top"></div>
+                          <table id="tablaclasificacion" class="table is-datatable is-hoverable table-is-bordered is-fullwidth dataTable no-footer">
+                            <thead>
+                              <tr>
+                                <th class="sorting" style="width: 20.4219px;">Posición</th>
+                                <th class="sorting" style="width: 163.828px;">Jugador</th>
+                                <th class="sorting" style="width: 36.3906px;">Rol</th>
+                                <th class="sorting" style="width: 203.828px;">Cuenta</th>
+                                <th class="sorting" style="width: 191.172px;">Elo</th>
+                                <th class="sorting" style="width: 70.953px;">Partidas</th>
+                                <th class="sorting" style="width: 70.797px;">Ganadas</th>
+                                <th class="sorting" style="width: 72.938px;">Perdidas</th>
+                                <th class="sorting" style="width: 67.125px;">Winrate</th>
+                                <th class="sorting" style="width: 46.6875px;">Stats</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tablaContenido">
+                              <!-- Contenido -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
