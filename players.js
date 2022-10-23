@@ -67,9 +67,15 @@ const players = [
 		data: null
 	},
 	{
-		name: "Adrià",
+		name: "Adrisasteer",
 		accountName: "Mimamamememima",
 		lane: "mid",
+		data: null
+	},
+	{
+		name: "Óscar",
+		accountName: "Resjer",
+		lane: "adc",
 		data: null
 	}
 ];

@@ -7,7 +7,6 @@
     <script type="module" src="scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="images/soloq-logotipo1.png">
-    <link rel="stylesheet" href="app.css?v=1">
     <link rel="stylesheet" href="main.css?v=18">
   </head>
   <body class="is-dark">
@@ -65,63 +64,53 @@
         <div class="page-content-wrapper">
           <div class="page-content is-relative">
             <div class="page-content-inner">
-              <div class="personal-dashboard personal-dashboard-v1">
-                <div class="dashboard-body">
-                  <div class="column is-12">
-                    <nav class="breadcrumb" aria-label="breadcrumbs">
-                      <ul>
-                        <li>
-                          <a>
-                            <span id="quantityPlayers">10 jugadores</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            <span>50€ en premios :O</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            <span>Liga de las Leyendas</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            <span>04/12/2022 - 04/01/2023</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div class="columns is-multiline">
-                    <div class="table-wrapper" data-simplebar="init">
-                      <div class="simplebar-wrapper" style="margin: 0px;">
-                        <div id="tablaclasificacion_wrapper" class="dataTables_wrapper no-footer">
-                          <div class="top"></div>
-                          <table id="tablaclasificacion" class="table is-datatable is-hoverable table-is-bordered is-fullwidth dataTable no-footer">
-                            <thead>
-                              <tr>
-                                <th class="sorting" style="width: 20.4219px;">Posición</th>
-                                <th class="sorting" style="width: 163.828px;">Jugador</th>
-                                <th class="sorting" style="width: 36.3906px;">Rol</th>
-                                <th class="sorting" style="width: 203.828px;">Cuenta</th>
-                                <th class="sorting" style="width: 191.172px;">Elo</th>
-                                <th class="sorting" style="width: 70.953px;">Partidas</th>
-                                <th class="sorting" style="width: 70.797px;">Ganadas</th>
-                                <th class="sorting" style="width: 72.938px;">Perdidas</th>
-                                <th class="sorting" style="width: 67.125px;">Winrate</th>
-                                <th class="sorting" style="width: 46.6875px;">Stats</th>
-                              </tr>
-                            </thead>
-                            <tbody id="tablaContenido">
-                              <!-- Contenido -->
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <!-- Texto Info -->
+              <div class="column is-12">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                  <ul>
+                    <li><a><span id="quantityPlayers">10 jugadores</span></a></li>
+                    <li><a><span>El kidbuho la chupa</span></a></li>
+                    <li><a><span>Liga de las Leyendas</span></a></li>
+                    <li><a><span>04/12/2022 - 04/01/2023</span></a></li>
+                  </ul>
+                </nav>
+              </div>
+              <!-- SoloQ - Flex -->
+              <div class="basic-card botones-cola">
+                <button id="boton-izquierdo" class="column is-5 boton-cola izquierda selected">Solo</button>
+                <button id="boton-derecho" class="column is-5 boton-cola derecha">Flex</button>
+                <div style="width: 100%;">
+                  <button id="boton-normal" class="column is-5 boton-cola normas"> Normas </button>
                 </div>
+              </div>
+              <!-- Clasificacion -->
+              <div class="table-wrapper" data-simplebar="init">
+                <div id="tablaclasificacion_wrapper" class="dataTables_wrapper no-footer">
+                  <div class="top"></div>
+                  <table id="tablaclasificacion" class="table is-datatable is-hoverable table-is-bordered is-fullwidth dataTable no-footer">
+                    <thead>
+                      <tr>
+                        <th style="width: 20px;">Posición</th>
+                        <th style="width: 162px;">Jugador</th>
+                        <th style="width: 36px;">Rol</th>
+                        <th style="width: 192px;">Cuenta</th>
+                        <th style="width: 192px;">Elo</th>
+                        <th style="width: 72px;">Partidas</th>
+                        <th style="width: 72px;">Ganadas</th>
+                        <th style="width: 72px;">Perdidas</th>
+                        <th style="width: 68px;">Winrate</th>
+                        <th style="width: 120px;">Stats</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tablaContenido">
+                      <!-- Contenido -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- Footer -->
+              <div class="basic-card">
+                <span style="color:#a2a5b9"> Discord SoloQChallenge. Todos los derechos reservados. </span>
               </div>
             </div>
           </div>
