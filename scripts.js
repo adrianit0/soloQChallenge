@@ -2,6 +2,7 @@
 import { getPlayers } from "./players.js";
 
 // Colecciones
+let debug = false;
 let fetchs = [];
 let players = getPlayers();
 let posicion = 1;
@@ -60,7 +61,7 @@ function inicializar() {
   const allData = Promise.all(fetchs);
   allData.then((res) => { 
     addAllFilas();
-    console.log(players);
+    console(players);
   });
 
   $("#quantityPlayers").text(players.length + " jugadores")
@@ -76,6 +77,14 @@ function inicializar() {
     $("#boton-izquierdo").addClass('selected');
     seleccionarLiga("RANKED_SOLO_5X5");
   });
+
+  $("#boton-normas").click(() => {
+    $("#normas-modal").addClass("is-active");
+  });
+
+  $("#boton-cerrar-modal, #boton-equis-modal, #fondo-cerrar-modal").click(() => {
+    $("#normas-modal").removeClass("is-active");
+  })
 }
 
 function añadirFilaTabla(player) {
@@ -151,23 +160,26 @@ function returnValue(soloQData) {
   if (tier === "IRON")
     points += 100000;
 
-  if (tier === "I")
+  if (rank === "I")
     points += 40100;
-  if (tier === "II")
+  if (rank === "II")
     points += 30100;
-  if (tier === "III")
+  if (rank === "III")
     points += 20100;
-  if (tier === "IV")
+  if (rank === "IV")
     points += 10100;
 
   points += soloQData.leaguePoints * 100;
 
-  points += soloQData.wins /100;
+  points += soloQData.wins /10000;
 
   return points;
 }
 
-// recuperarInvocador("IWS Piña");
+function console (text) {
+  if (debug)
+    console.log(text);
+}
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     inicializar();

@@ -80,6 +80,18 @@ const players = [
 	}
 ];
 
+// Lista de reglas para el soloQChallenge
+const normas = [
+	"<b>Fecha inicial: </b> ???",
+	"<b>Termina el: </b> ???",
+	"Máximo 150 partidas"
+];
+
 export function getPlayers() {
 	return players;
 }
+
+export function getNormas() {
+	return normas;
+}
+
