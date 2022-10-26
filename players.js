@@ -92,6 +92,13 @@ const players = [
 		data: null
 	},
 	{
+		name: "Reni",
+		accountName: "Renigni",
+		lane: "jungla",
+		smurf: false,
+		data: null
+	},
+	{
 		name: "Amigo Fran 1",
 		accountName: "Alado Archipegaso",
 		lane: "jungla",
