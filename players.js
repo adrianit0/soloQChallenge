@@ -90,6 +90,34 @@ const players = [
 		lane: "adc",
 		smurf: false,
 		data: null
+	},
+	{
+		name: "Amigo Fran 1",
+		accountName: "Alado Archipegaso",
+		lane: "jungla",
+		smurf: false,
+		data: null
+	},
+	{
+		name: "Amigo Fran 2",
+		accountName: "Diegore18",
+		lane: "support",
+		smurf: false,
+		data: null
+	},
+	{
+		name: "Amigo Fran 3",
+		accountName: "Riku13116",
+		lane: "support",
+		smurf: false,
+		data: null
+	},
+	{
+		name: "Antonio (Amigo Fran 4)",
+		accountName: "Rvfv Fanbøy",
+		lane: "mid",
+		smurf: false,
+		data: null
 	}
 ];
 
