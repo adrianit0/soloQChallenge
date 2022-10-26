@@ -19,10 +19,19 @@ function recuperarInvocador (player) {
 }
 
 function seleccionarLigaJugador(liga, player) {
-  let leagues = player.data.latestRanks.filter( s => s.queue === liga);
-  if (leagues.length > 0) {
-    player.data.rankedSelected = leagues[0];
+  let noEncontrado = false;
+  if (!player.data || player.notFound) {
+    player.data = {};
+    player.notFound = true;
   } else {
+    let leagues = player.data.latestRanks.filter( s => s.queue === liga);
+    if (leagues.length > 0) {
+      player.data.rankedSelected = leagues[0];
+    } else {
+      player.notFound = true;
+    }
+  }
+  if (player.notFound) {
     player.data.rankedSelected = {
       leaguePoints: 0,
       losses: 0,
@@ -92,11 +101,13 @@ function añadirFilaTabla(player) {
   const games = player.data.rankedSelected.wins + player.data.rankedSelected.losses;
   const percentaje = Math.round(player.data.rankedSelected.wins/games*100);
   const translatedRank = translateRank(player.data.rankedSelected.tier);
+  const smurf = player.smurf ? "high" : "low";
+  const smurfText = player.smurf ? "Es una cuenta Smurf" : "No es una cuenta Smurf";
   let fila = '<tr>' +
                 '<td class="sorting_1">' + posicion + '</td>' +
                 '<td> ' + player.name + ' </td>' +
                 '<td>' +
-                '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src=" images/' + player.lane + '_high.png">' +
+                '  <img title="' + smurfText + '" style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src=" images/' + player.lane + '_' + smurf + '.png">' +
                 '</td>' +
                 '<td>' +
                 '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/' + player.data.profileIconId + '.png"> ' + player.accountName +
