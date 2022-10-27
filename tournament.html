@@ -3,8 +3,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> Discord SoloQChallenge </title>
-    <script type="module" src="scripts.js"></script>
+    <title> Torneo 1vs1 Discord </title>
+    <script type="module" src="scriptsTorneo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="dist/jquery.bracket.min.js"></script>
     <link rel="icon" type="image/png" href="images/soloq-logotipo1.png">
@@ -48,14 +48,14 @@
           </div>
           <div class="center">
             <div id="webapp-navbar-menu" class="centered-links">
-              <a class="centered-link is-active">
+              <a class="centered-link is-active" href="./index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
                   <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
                   <polygon points="12 15 17 21 7 21 12 15"></polygon>
                 </svg>
                 <span>Clasificación soloQ Challenge</span>
               </a>
-              <a class="centered-link is-active" href="tournament.html">
+              <a class="centered-link is-active">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510.31 510.31" style="enable-background:new 0 0 510.31 510.31" xml:space="preserve"><path d="M504.06 443.728c-8.341-8.341-21.845-8.341-30.165 0h-.021L412.946 382.8c20.096-23.915 34.731-50.389 36.928-72.768 1.131-11.733-7.424-22.165-19.157-23.317-11.925-1.195-22.165 7.445-23.317 19.157-.256 2.773-1.067 5.803-2.091 8.917l-59.648-59.627 128.235-128.235a21.564 21.564 0 0 0 5.141-8.341l30.165-90.496a21.374 21.374 0 0 0-5.141-21.845 21.34 21.34 0 0 0-21.845-5.141L391.719 31.27a21.349 21.349 0 0 0-8.341 5.163L255.143 164.646 126.93 36.432a21.063 21.063 0 0 0-8.341-5.163L28.092 1.104C20.476-1.456 11.964.507 6.268 6.245A21.339 21.339 0 0 0 1.105 28.09l30.165 90.496a21.349 21.349 0 0 0 5.163 8.341L164.646 255.14l-59.904 59.925c-.917-2.965-1.621-5.824-1.771-8.405-.704-11.755-10.88-20.693-22.592-20.011-11.776.725-20.693 10.837-19.989 22.592 1.344 22.251 16.149 49.237 36.864 73.643l-60.821 60.843c-8.341-8.341-21.845-8.341-30.165 0-8.341 8.32-8.341 21.824 0 30.165l30.165 30.165c4.16 4.16 9.621 6.251 15.083 6.251s10.901-2.091 15.083-6.251c8.32-8.341 8.32-21.845 0-30.165l60.907-60.928c23.915 20.096 50.411 34.709 72.789 36.885a17.67 17.67 0 0 0 2.091.107c10.859 0 20.139-8.235 21.205-19.264 1.152-11.712-7.445-22.165-19.157-23.296-2.773-.277-5.803-1.067-8.917-2.112l59.648-59.627 59.904 59.904c-2.965.917-5.824 1.621-8.405 1.771-11.776.704-20.715 10.816-20.011 22.592.683 11.307 10.091 20.032 21.269 20.032.448 0 .875 0 1.323-.043 22.251-1.344 49.216-16.149 73.621-36.864l60.843 60.843c-8.32 8.32-8.32 21.824 0 30.165a21.36 21.36 0 0 0 15.104 6.251 21.35 21.35 0 0 0 15.083-6.251l30.165-30.165c8.319-8.34 8.319-21.844-.001-30.164zm-346.133-61.184a218.47 218.47 0 0 1-16.448-14.784c-.149-.149-.299-.32-.448-.469a218.037 218.037 0 0 1-13.419-14.784l67.2-67.179 30.187 30.165-67.072 67.051zm140.267-174.848-12.864-12.885L409.98 70.16l45.269-15.083-15.104 45.248-124.65 124.673-17.301-17.302z"/></svg>
 
                 <span>Torneo 1vs1</span>
@@ -71,82 +71,32 @@
         <div class="page-content-wrapper">
           <div class="page-content is-relative">
             <div class="page-content-inner">
-              <!-- Texto Info -->
-              <div class="column is-12">
-                <nav class="breadcrumb" aria-label="breadcrumbs">
-                  <ul>
-                    <li><a><span id="quantityPlayers">10 jugadores</span></a></li>
-                    <li><a><span>Liga Provisional</span></a></li>
-                    <li><a><span>Liga de las Leyendas</span></a></li>
-                    <li><a><span>04/12/2022 - 04/01/2023</span></a></li>
-                  </ul>
-                </nav>
+              <div class="basic-card" style="border-color: red">
+                <span style="color:#a2a5b9"> 
+                  <svg style="margin: auto" width="20" height="20" stroke="red" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M19.511 17.98 10.604 1.348a.697.697 0 0 0-1.208 0L.49 17.98a.675.675 0 0 0 .005.68c.125.211.352.34.598.34h17.814a.694.694 0 0 0 .598-.34.677.677 0 0 0 .006-.68zM11 17H9v-2h2v2zm0-3.5H9V7h2v6.5z"/></svg>
+                  <b style="color: red">Atención:</b> Los jugadores de abajo son de pruebas. Ni están confirmados ni esta será la selección, solo es una testeo, cuando se dispute se seleccionará los brackets finales. </span>
               </div>
-              <!-- SoloQ - Flex -->
+              <!-- Torneo -->
               <div class="basic-card botones-cola">
-                <button id="boton-izquierdo" class="column is-5 boton-cola izquierda selected">Solo</button>
-                <button id="boton-derecho" class="column is-5 boton-cola derecha">Flex</button>
-                <div style="width: 100%;">
-                  <button id="boton-normas" class="column is-5 boton-cola normas" style="display: none"> Normas </button>
-                </div>
+                  <div class="torneo" style="margin: auto;"></div>
               </div>
-              <!-- Clasificacion -->
-              <div class="table-wrapper" data-simplebar="init">
-                <div id="tablaclasificacion_wrapper" class="dataTables_wrapper no-footer">
-                  <div class="top"></div>
-                  <table id="tablaclasificacion" class="table is-datatable is-hoverable table-is-bordered is-fullwidth dataTable no-footer">
-                    <thead>
-                      <tr>
-                        <th style="width: 20px;">Posición</th>
-                        <th style="width: 162px;">Jugador</th>
-                        <th style="width: 36px;">Rol</th>
-                        <th style="width: 192px;">Cuenta</th>
-                        <th style="width: 192px;">Elo</th>
-                        <th style="width: 72px;">Partidas</th>
-                        <th style="width: 72px;">Ganadas</th>
-                        <th style="width: 72px;">Perdidas</th>
-                        <th style="width: 68px;">Winrate</th>
-                        <th style="width: 120px;">Stats</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tablaContenido">
-                      <!-- Contenido -->
-                    </tbody>
-                  </table>
-                </div>
+              <!-- Reglas -->
+              <div class="basic-card">
+                <b style="color:#a2a5b9"> Normas (Provisional): </b>
+                <ul style="color:#a2a5b9; list-style-type: circle; margin-left: 24px;">
+                  <li>Los partidos serán en Personalizadas, en <b>El Abismo de los Lamentos</b>.</li>
+                  <li>Cada partida será 1vs1.</li>
+                  <li>Cada jugador será libre de seleccionar el campeón que quiera (Duda: Incluir baneos??).</li>
+                  <li>El ganador de cada partida será quien consiga matar al menos 3 veces al campeón rival o destruya el nexo.</li>
+                  <li>Cuartos y Semifinal serán al <b>mejor de 1</b>. Final al <b>mejor de 3</b>.</li>
+                  <li>La participación al torneo es Gratuita pero limitado a 8 jugadores.</li>
+                  <li>El ganador del Torneo ganará una Skin por valor de <b>1850RP</b>.</li>
+                </ul>
               </div>
               <!-- Footer -->
               <div class="basic-card">
                 <span style="color:#a2a5b9"> Discord SoloQChallenge. Todos los derechos reservados. </span>
               </div>
-              <!-- Popup -->
-              <div id="normas-modal" class="modal h-modal">
-                <div id="fondo-cerrar-modal" class="modal-background h-modal-close"></div>
-                  <div class="modal-content">
-                    <div class="modal-card">
-                      <header class="modal-card-head">
-                        <h3>Normas</h3>
-                        <button id="boton-equis-modal" class="h-modal-close ml-auto" aria-label="close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                      </header>
-                      <div class="modal-card-body">
-                      <div class="inner-content">
-                      <div>
-                        <div class="placeholder-content">
-                          <center>
-                            <!-- LISTA DE NORMAS -->
-                            <p> </p>
-                          </center>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-card-foot is-centered">
-                      <a id="boton-cerrar-modal" class="button h-button is-danger is-rounded h-modal-close">Cerrar</a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

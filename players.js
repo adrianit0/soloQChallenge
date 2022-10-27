@@ -5,6 +5,7 @@ const players = [
 		accountName: "manμe",
 		lane: "top",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -12,6 +13,7 @@ const players = [
 		accountName: "420 Mia Ákalifa",
 		lane: "support",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -19,6 +21,7 @@ const players = [
 		accountName: "Señor Piña",
 		lane: "support",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -26,6 +29,7 @@ const players = [
 		accountName: "kidbuho",
 		lane: "mid",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -33,6 +37,7 @@ const players = [
 		accountName: "Aphelitoshueles",
 		lane: "adc",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -40,6 +45,7 @@ const players = [
 		accountName: "alejop",
 		lane: "jungle",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -47,6 +53,7 @@ const players = [
 		accountName: "Żëłä",
 		lane: "jungle",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -54,6 +61,7 @@ const players = [
 		accountName: "The Topfatther",
 		lane: "top",
 		smurf: false,
+		tournament: true,
 		data: null
 	},
 	{
@@ -61,6 +69,7 @@ const players = [
 		accountName: "Lobitoh",
 		lane: "top",
 		smurf: false,
+		tournament: false,
 		data: null
 	},
 	{
@@ -68,6 +77,7 @@ const players = [
 		accountName: "ƒrann",
 		lane: "top",
 		smurf: false,
+		tournament: false,
 		data: null
 	},
 	{
@@ -75,6 +85,7 @@ const players = [
 		accountName: "Otp Patty",
 		lane: "jungle",
 		smurf: false,
+		tournament: false,
 		data: null
 	},
 	{
@@ -82,6 +93,7 @@ const players = [
 		accountName: "Mimamamememima",
 		lane: "mid",
 		smurf: false,
+		tournament: false,
 		data: null
 	},
 	{
@@ -89,6 +101,7 @@ const players = [
 		accountName: "Resjer",
 		lane: "adc",
 		smurf: false,
+		tournament: false,
 		data: null
 	}
 ];
@@ -104,6 +117,10 @@ const normas = [
 
 export function getPlayers() {
 	return players;
+}
+
+export function getTournamentPlayers() {
+	return players.filter(p => p.tournament);
 }
 
 export function getNormas() {
