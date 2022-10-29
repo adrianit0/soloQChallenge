@@ -1,23 +1,26 @@
 
 import { getTournamentPlayers } from "./players.js";
-import { recuperarInvocador } from "./llamadasAjax.js";
+import { recuperarJugadoresTorneo, recuperarPosicionesTorneo, recuperarInvocador } from "./llamadasAjax.js";
 
-let players = getTournamentPlayers();
+let players = [];
 let fetchs = [];
-
+let results = [];
 
 
 function inicializar() {
-  players.forEach ( p => {
-    recuperarInvocador(p, fetchs);
-  });
+  const promise = recuperarJugadoresTorneo(players);
+  const promise2 = recuperarPosicionesTorneo(results);
 
-  const allData = Promise.all(fetchs);
+  Promise.all([promise, promise2]).then((res) => {
+    players.forEach ( p => {
+      recuperarInvocador(p, fetchs);
+    });
+
+    const allData = Promise.all(fetchs);
     allData.then((res) => { 
-      crearTabla();
-      console(players);
+       crearTabla();
+    });
   });
-  
 }
 
 function crearTabla() {
@@ -28,17 +31,7 @@ function crearTabla() {
       [recoverPlayer(4), recoverPlayer(5)],
       [recoverPlayer(6), recoverPlayer(7)],
     ],
-    "results": [            
-      [                     
-        //[0, 0], [0, 0], [0, 0], [0, 0]
-      ], 
-      /*[
-        [1, 0], [1, 0]
-      ],
-      [
-        [1, 0]
-      ]*/
-    ]
+    "results": results
   };
 
   $('.torneo').bracket({

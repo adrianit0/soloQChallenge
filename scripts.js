@@ -1,6 +1,6 @@
 
 import { getPlayers } from "./players.js";
-import { recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
+import { recuperarJugadores, recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
 
 // Colecciones
 let debug = false;
@@ -28,37 +28,42 @@ function addAllFilas() {
 }
 
 function inicializar() {
-  players.forEach ( p => {
-    recuperarInvocador(p, fetchs);
+  const promise = recuperarJugadores(players);
+
+  promise.then((res) => {
+    players.forEach ( p => {
+      recuperarInvocador(p, fetchs);
+    });
+
+    const allData = Promise.all(fetchs);
+    allData.then((res) => { 
+      addAllFilas();
+      console(players);
+    });
+
+    $("#quantityPlayers").text(players.length + " jugadores")
+    
+    $("#boton-derecho").click(() => {
+      $("#boton-izquierdo").removeClass('selected');
+      $("#boton-derecho").addClass('selected');
+      seleccionarLiga("RANKED_FLEX_SR");
+    });
+
+    $("#boton-izquierdo").click(() => {
+      $("#boton-derecho").removeClass('selected');
+      $("#boton-izquierdo").addClass('selected');
+      seleccionarLiga("RANKED_SOLO_5X5");
+    });
+
+    $("#boton-normas").click(() => {
+      $("#normas-modal").addClass("is-active");
+    });
+
+    $("#boton-cerrar-modal, #boton-equis-modal, #fondo-cerrar-modal").click(() => {
+      $("#normas-modal").removeClass("is-active");
+    })
   });
 
-  const allData = Promise.all(fetchs);
-  allData.then((res) => { 
-    addAllFilas();
-    console(players);
-  });
-
-  $("#quantityPlayers").text(players.length + " jugadores")
-  
-  $("#boton-derecho").click(() => {
-    $("#boton-izquierdo").removeClass('selected');
-    $("#boton-derecho").addClass('selected');
-    seleccionarLiga("RANKED_FLEX_SR");
-  });
-
-  $("#boton-izquierdo").click(() => {
-    $("#boton-derecho").removeClass('selected');
-    $("#boton-izquierdo").addClass('selected');
-    seleccionarLiga("RANKED_SOLO_5X5");
-  });
-
-  $("#boton-normas").click(() => {
-    $("#normas-modal").addClass("is-active");
-  });
-
-  $("#boton-cerrar-modal, #boton-equis-modal, #fondo-cerrar-modal").click(() => {
-    $("#normas-modal").removeClass("is-active");
-  })
 }
 
 function añadirFilaTabla(player) {
