@@ -69,7 +69,7 @@ function inicializar() {
 function añadirFilaTabla(player) {
 
   const games = player.data.rankedSelected.wins + player.data.rankedSelected.losses;
-  const percentaje = Math.round(player.data.rankedSelected.wins/games*100);
+  const percentaje = games === 0 ? 0 : Math.round(player.data.rankedSelected.wins/games*100);
   const translatedRank = translateRank(player.data.rankedSelected.tier);
   const smurf = player.smurf ? "high" : "low";
   const smurfText = player.smurf ? "Es una cuenta Smurf" : "No es una cuenta Smurf";

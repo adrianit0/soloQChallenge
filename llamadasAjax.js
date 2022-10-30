@@ -50,6 +50,7 @@ export function seleccionarLigaJugador(liga, player) {
     }
   }
   if (player.notFound) {
+    player.notFound = false;
     player.data.rankedSelected = {
       leaguePoints: 0,
       losses: 0,
