@@ -20,7 +20,7 @@ function seleccionarLiga(liga) {
 
 function addAllFilas() {
   players = players.sort( (a, b) => {
-    return returnValue(b.data.rankedSelected) - returnValue(a.data.rankedSelected);
+    return returnValue(b.data.rankedSelected, b) - returnValue(a.data.rankedSelected, a);
   });
   players.forEach ( p => {
     añadirFilaTabla(p);
@@ -123,10 +123,14 @@ function translateRank(rank) {
   return "Unranked";
 }
 
-function returnValue(soloQData) {
+function returnValue(soloQData, player) {
   let points = 0;
   let tier = soloQData.tier;
   let rank = soloQData.rank;
+
+  if (player.smurf) {
+    points += 1000000;
+  }
 
   if (tier === "DIAMOND")
     points += 600000;
