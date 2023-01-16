@@ -80,7 +80,7 @@ function añadirFilaTabla(player) {
                 '  <img title="' + smurfText + '" style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src=" images/' + player.lane + '_' + smurf + '.png">' +
                 '</td>' +
                 '<td>' +
-                '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/' + player.data.profileIconId + '.png"> ' + player.accountName +
+                '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/' + player.data.profileIconId + '.png"> ' + player.accountName +
                 '</td>' +
                 '<td>' +
                 '  <img style="vertical-align: middle; height:30px;border-radius:30px" src="images/lol/' + translatedRank + '_' + player.data.rankedSelected.rank + '.png">' +
