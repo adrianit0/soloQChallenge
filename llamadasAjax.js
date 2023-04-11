@@ -1,107 +1,13 @@
+import { getPlayerSoloQChallengeList, getPlayerDuoQChallengeList } from "./playerList.js";
 
 const traerDelServer = true;
-const playersList = [
-  {
-    "name": "Manuel",
-    "accountName": "LapusheaSion",
-    "lane": "top",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  {
-    "name": "Enrique",
-    "accountName": "Aceessienas",
-    "lane": "mid",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  {
-    "name": "Piña",
-    "accountName": "Zileano",
-    "lane": "support",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  {
-    "name": "Joni",
-    "accountName": "Aillmarudr",
-    "lane": "top",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  {
-    "name": "Lechón",
-    "accountName": "Aicatiand",
-    "lane": "support",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  {
-    "name": "Guille",
-    "accountName": "El chico macro",
-    "lane": "jungle",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  {
-    "name": "Lobitoh",
-    "accountName": "FOX Lobitoh",
-    "lane": "top",
-    "smurf": false,
-    "tournament": true,
-    "data": null
-  },
- 
-  {
-    "name": "Kike",
-    "accountName": "Aikoylava",
-    "lane": "adc",
-    "smurf": true,
-    "tournament": true,
-    "data": null
-  },
-  
-  {
-    "name": "Raul",
-    "accountName": "The JabaQ Method",
-    "lane": "jungle",
-    "smurf": true,
-    "tournament": false,
-    "data": null
-  },
-  
-  {
-    "name": "Adri",
-    "accountName": "Tengo Zed",
-    "lane": "mid",
-    "smurf": true,
-    "tournament": false,
-    "data": null
-  },
-  
-  {
-    "name": "Musha2",
-    "accountName": "Azuk1tu Fanboy",
-    "lane": "support",
-    "smurf": true,
-    "tournament": false,
-    "data": null
-  },
-
-];
 
 // https://www.npoint.io/docs/ed8cdf7a7587c91d4fd9
 export function recuperarJugadores (players) {
   let promise = null;
   if (!traerDelServer) {
     promise = new Promise(function(resolve, reject) {
-      resolve(playersList);
+      resolve(getPlayerSoloQChallengeList());
     });
   } else {
     promise = fetch("https://api.npoint.io/ed8cdf7a7587c91d4fd9")
@@ -110,6 +16,23 @@ export function recuperarJugadores (players) {
 
   return promise.then((data) => { 
     players.push(...data);  
+  });
+}
+
+// https://www.npoint.io/docs/644b76473eb4b98795b5
+export function recuperarJugadoresDuoQChallenge (teams) {
+  let promise = null;
+  if (!traerDelServer) {
+    promise = new Promise(function(resolve, reject) {
+      resolve(getPlayerDuoQChallengeList());
+    });
+  } else {
+    promise = fetch("https://api.npoint.io/644b76473eb4b98795b5")
+      .then((response) => response.json());
+  }
+
+  return promise.then((data) => { 
+    teams.push(...data);  
   });
 }
 
@@ -144,7 +67,7 @@ export function recuperarInvocador (player, fetchs) {
 
 export function seleccionarLigaJugador(liga, player) {
   let noEncontrado = false;
-  if (!player.data || player.notFound) {
+  if (!player.data || !player.data.latestRanks || player.notFound) {
     player.data = {};
     player.notFound = true;
   } else {
@@ -166,4 +89,9 @@ export function seleccionarLigaJugador(liga, player) {
       wins: 0
     };
   }
+}
+
+export function seleccionarLigaTeam(liga, team) {
+  seleccionarLigaJugador(liga, team.player1);
+  seleccionarLigaJugador(liga, team.player2);
 }

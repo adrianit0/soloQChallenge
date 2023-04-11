@@ -1,4 +1,12 @@
 
+
+.teamColumn {
+	border-style: none !important;
+    vertical-align: bottom !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}
+
 /*CUSTOM CSS*/
 
 .page-content-inner .basic-card {

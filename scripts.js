@@ -1,12 +1,17 @@
 
 import { getPlayers } from "./players.js";
 import { recuperarJugadores, recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
+import { setHeader } from "./header.js";
+import { getImgUrl } from "./config.js";
+import { console, returnValue, translateRank } from './utilidades.js';
 
 // Colecciones
 let debug = false;
 let fetchs = [];
 let players = getPlayers();
 let posicion = 1;
+
+setHeader();
 
 function seleccionarLiga(liga) {
   posicion = 1;
@@ -80,7 +85,7 @@ function añadirFilaTabla(player) {
                 '  <img title="' + smurfText + '" style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src=" images/' + player.lane + '_' + smurf + '.png">' +
                 '</td>' +
                 '<td>' +
-                '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/' + player.data.profileIconId + '.png"> ' + player.accountName +
+                '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="' + getImgUrl(player.data.profileIconId) + '"> ' + player.accountName +
                 '</td>' +
                 '<td>' +
                 '  <img style="vertical-align: middle; height:30px;border-radius:30px" src="images/lol/' + translatedRank + '_' + player.data.rankedSelected.rank + '.png">' +
@@ -105,65 +110,6 @@ function añadirFilaTabla(player) {
 
   $("#tablaContenido").append(fila);
   posicion ++;
-}
-
-function translateRank(rank) {
-  if (rank === "DIAMOND")
-    return "Diamante";
-  if (rank === "PLATINUM")
-    return "Platino";
-  if (rank === "GOLD")
-    return "Oro";
-  if (rank === "SILVER")
-    return "Plata";
-  if (rank === "BRONZE")
-    return "Bronce";
-  if (rank === "IRON")
-    return "Hierro";
-  return "Unranked";
-}
-
-function returnValue(soloQData, player) {
-  let points = 0;
-  let tier = soloQData.tier;
-  let rank = soloQData.rank;
-
-  if (player.smurf) {
-    points += 1000000;
-  }
-
-  if (tier === "DIAMOND")
-    points += 600000;
-  if (tier === "PLATINUM")
-    points += 500000;
-  if (tier === "GOLD")
-    points += 400000;
-  if (tier === "SILVER")
-    points += 300000;
-  if (tier === "BRONZE")
-    points += 200000;
-  if (tier === "IRON")
-    points += 100000;
-
-  if (rank === "I")
-    points += 40100;
-  if (rank === "II")
-    points += 30100;
-  if (rank === "III")
-    points += 20100;
-  if (rank === "IV")
-    points += 10100;
-
-  points += soloQData.leaguePoints * 100;
-
-  points += soloQData.wins /10000;
-
-  return points;
-}
-
-function console (text) {
-  if (debug)
-    console.log(text);
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 

@@ -1,11 +1,14 @@
 
 import { getTournamentPlayers } from "./players.js";
 import { recuperarJugadoresTorneo, recuperarPosicionesTorneo, recuperarInvocador } from "./llamadasAjax.js";
+import { getImgUrl } from "./config.js";
+import { setHeader } from "./header.js";
 
 let players = [];
 let fetchs = [];
 let results = [];
 
+setHeader();
 
 function inicializar() {
   const promise = recuperarJugadoresTorneo(players);
@@ -46,7 +49,7 @@ function crearTabla() {
 
 function recoverPlayer (id) {
   let player = players[id];
-  return '<img style="vertical-align: middle; height:20px;width:20px;border-radius:30px" src="https://ddragon.leagueoflegends.com/cdn/12.20.1/img/profileicon/' + player.data.profileIconId + '.png"> ' + player.accountName;
+  return '<img style="vertical-align: middle; height:20px;width:20px;border-radius:30px" src=" ' + getImgUrl(player.data.profileIconId) + ' "> ' + player.accountName;
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
