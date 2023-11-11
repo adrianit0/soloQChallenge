@@ -25,7 +25,7 @@ const reglamentos = [
             "El máximo de jugadores permitidos serán 8 (Hasta llenar el Lobby). <span>Los organizadores podrán decidir quienes son los 8 jugadores en base a los participantes iniciales.</span>",
             "Se jugarán un máximo de 7 partidas. <span>Para que todos los jugadores puedan jugar una partida con otro jugador sin repetir compañero.</span>",
             "Los equipos de cada partida lo decidirá el propio algoritmo que hace los equipos. <span>De ninguna manera está permitido cambiarse de equipo los jugadores</span>",
-            "La pareja de jugadores que queden primero en cada partida conseguirán 3 puntos cada uno, los segundos 2 puntos, los terceros 1 punto.",
+            "La pareja de jugadores que queden primero en cada partida conseguirán 5 puntos cada uno, los segundos 3 puntos, los terceros 1 punto.",
             "Los puntos le servirá a cada jugador para clasificarse en la tabla de puntuación.",
             "Tras el Septimo partido, la clasificación será el orden en orden ascendente de jugadores con más puntos.",
             "Los premios se incluirán en el popup de premios",

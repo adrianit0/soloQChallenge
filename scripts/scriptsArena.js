@@ -50,7 +50,7 @@ function inicializar() {
       console(players);
     });
 
-    $("#quantityPlayers").text(players.length + " jugadores")
+    $("#quantityPlayers").text(players.length + " jugadores");
     
     $("#boton-derecho").click(() => {
       $("#boton-izquierdo").removeClass('selected');

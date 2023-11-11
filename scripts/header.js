@@ -30,7 +30,7 @@ const staticHeader = `
 </a>`;
 
 const staticFooter = `
-<span style="color:#a2a5b9"> DiscordQChallenges. Todos los derechos reservados. </span>
+<span style="color:#a2a5b9"> DiscordQChallenges. Todos los derechos reservados.</span>
 `;
 
 function getHeader() {
