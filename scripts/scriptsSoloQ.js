@@ -1,6 +1,6 @@
 
 import { getPlayers } from "./players.js";
-import { recuperarJugadores, recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
+import { recuperarJugadoresSoloQChallenge, recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
 import { setHeader } from "./header.js";
 import { getImgUrl } from "./config.js";
 import { console, returnValue, translateRank } from './utilidades.js';
@@ -33,7 +33,7 @@ function addAllFilas() {
 }
 
 function inicializar() {
-  const promise = recuperarJugadores(players);
+  const promise = recuperarJugadoresSoloQChallenge(players);
 
   promise.then((res) => {
     players.forEach ( p => {

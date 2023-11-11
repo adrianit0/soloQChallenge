@@ -1,0 +1,37 @@
+
+
+#boton-cerrar-modal, .boton-cerrar-modal {
+    padding: 8px;
+    margin-top: 6px;
+    margin-right: 4px;
+    background-color: #b97986;
+    border-color: gray;
+    float: right;
+    color: white;
+    border-radius: 5px;
+}
+
+.basic-card {
+    padding: 10px 0px !important;
+}
+
+.basic-card > span {
+    margin: 10px 20px;
+}
+
+.inner-content {
+    height: 400px;
+    overflow: inherit;
+    margin-bottom: 16px;
+}
+
+li {
+    margin-top:     8px;
+    margin-bottom:  8px;
+}
+
+li > span {
+    color: gray;
+    font-size: 14px;
+    font-style: italic;
+}
