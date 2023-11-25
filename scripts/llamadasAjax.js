@@ -42,11 +42,12 @@ export function recuperarJugadoresTorneo (players) {
   });
 }
 
-export function recuperarJugadoresArena (players) {
+export function recuperarJugadoresArena (players, games) {
   return fetch("https://api.npoint.io/a44dd97067152540c004")
     .then((response) => response.json())
     .then((data) => {
-      players.push(...(data.filter(p => p.tournament)));
+      players.push(...(data.players.filter(p => p.visible == null || p.visible)));
+      games.push(...(data.games.filter(p => p.visible == null || p.visible)))
   });
 }
 
@@ -95,6 +96,9 @@ export function seleccionarLigaJugador(liga, player) {
       wins: 0
     };
   }
+
+  player.data.arenaGames = [];
+  player.data.arenaPoints = 0;
 }
 
 export function seleccionarLigaTeam(liga, team) {

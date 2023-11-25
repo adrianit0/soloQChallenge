@@ -10,45 +10,32 @@ import { console, returnValue, translateRank } from './utilidades.js';
 let debug = false;
 let fetchs = [];
 let players = []; //getPlayers();
+let games = [];
 let posicion = 1;
 // TODO: Cambiar a un valor dinámico para poder crear más torneo tipo Arena
 let ID_GAME = 10;
 let ID_PRIZES = 11;
 
+// constantes
+const UKNOWN_RESULT = " ";
+const POSITION_POINTS = [5,3,1,0];
+
 setHeader();
 
-function seleccionarLiga(liga) {
-  posicion = 1;
-  $("#tablaContenido").children().remove();
-  players.forEach ( p => {
-    seleccionarLigaJugador(liga, p);
-  });
-
-  addAllFilas();
-}
-
-function addAllFilas() {
-  players = players.sort( (a, b) => {
-    return returnValue(b.data.rankedSelected, b) - returnValue(a.data.rankedSelected, a);
-  });
-  players.forEach ( p => {
-    añadirFilaTabla(p);
-  });
-}
-
 function inicializar() {
-  const promise = recuperarJugadoresArena(players);
+  const promise = recuperarJugadoresArena(players, games);
 
   promise.then((res) => {
     players.forEach ( p => {
       recuperarInvocador(p, fetchs);
     });
 
-    const allData = Promise.all(fetchs);
-    allData.then((res) => { 
+    Promise.all(fetchs)
+    .then((res) => { 
+      inicializarPartidas();
       addAllFilas();
-      console(players);
     });
+    
 
     $("#quantityPlayers").text(players.length + " jugadores");
     
@@ -81,14 +68,33 @@ function inicializar() {
 
 }
 
+function seleccionarLiga(liga) {
+  posicion = 1;
+  $("#tablaContenido").children().remove();
+  players.forEach ( p => {
+    seleccionarLigaJugador(liga, p);
+  });
+
+  addAllFilas();
+}
+
+function addAllFilas() {
+  players = players.sort( (a, b) => {
+    return b.data.arenaPoints - a.data.arenaPoints;
+  });
+  players.forEach ( p => {
+    añadirFilaTabla(p);
+  });
+}
+
 function añadirFilaTabla(player) {
-
-  const games = 0;
+  const baneado = player.banned;
+  const games = player.data.arenaGames.length;
   const translatedRank = translateRank(player.data.rankedSelected.tier);
-  const posicionMedia = "N/A";
-  const puntos = 0;
+  const posicionMedia = player.data.arenaGames.length == 0 ? "N/A" : Math.round(player.data.arenaGames.reduce((a,b) => a + b, 0) / player.data.arenaGames.length * 100)/100;
+  const puntos = player.data.arenaPoints;
 
-  let fila = '<tr>' +
+  let fila = (baneado ? '<tr class="jugadorBaneado">' : '<tr>') +
                 '<td class="sorting_1">' + posicion + '</td>' +
                 '<td> ' + player.name + ' </td>' +
                 '<td>' +
@@ -112,6 +118,89 @@ function añadirFilaTabla(player) {
 
   $("#tablaContenido").append(fila);
   posicion ++;
+}
+
+function inicializarPartidas() {
+  games.forEach ( g => {
+    crearPartida(g);
+  });
+}
+
+function crearPartida(game) {
+
+  let nombrePartida = "Partida " + game.id;
+
+  const titulo = $('<label class="labelPartido">' + nombrePartida + '</label>');
+  const bodyPartida = $('<div class="arena-game-card"></div>');
+
+  for (let i = 0; i < game.players.length; i++) {
+    const player1Id = parseInt(game.players[i][0])-1;
+    const player2Id = parseInt(game.players[i][1])-1;
+
+    const jugador1 = players[player1Id];
+    const jugador2 = players[player2Id];
+
+    const baneado = jugador1.banned || jugador2.banned;
+
+    const resultado = game.result[i] == 0 ? UKNOWN_RESULT : game.result[i];
+    let claseResultado = "unknown";
+
+
+    if (baneado) {
+      claseResultado = "banned";
+    } else if (resultado == 1) {
+      claseResultado = "first";
+    } else if (resultado == 2) {
+      claseResultado = "second";
+    } else if (resultado == 3) {
+      claseResultado = "third";
+    } else if (resultado == 4) {
+      claseResultado = "fourth";
+    }
+
+    let puntosObtenidos = '';
+    if (!baneado  && resultado != UKNOWN_RESULT && POSITION_POINTS[resultado-1]>0) {
+      puntosObtenidos = '<span class="labelPuntuacion"> (+' + POSITION_POINTS[resultado-1] + ') </span>' 
+    }
+
+    const stylePlayer1 = "player_" + player1Id;
+    const stylePlayer2 = "player_" + player2Id;
+
+    const bodyEquipo = $('<div class="arena-team-card ' + claseResultado + '"></div>');
+    const bodyEquipo1 = $('<div class="arena-player-card-left ' + claseResultado + ' '+ stylePlayer1 +'">' + jugador1.accountName + puntosObtenidos + '</div>');
+    const bodyResult = $('<div class="arena-result-card ' + claseResultado + '"> <span>' + resultado + '</span> </div>');
+    const bodyEquipo2 = $('<div class="arena-player-card-right ' + claseResultado + ' ' + stylePlayer2 + '">' + jugador2.accountName + puntosObtenidos + '</div>');
+
+    if (!baneado && resultado != UKNOWN_RESULT) {
+      jugador1.data.arenaGames.push(resultado);
+      jugador2.data.arenaGames.push(resultado);
+
+      jugador1.data.arenaPoints += POSITION_POINTS[resultado-1];
+      jugador2.data.arenaPoints += POSITION_POINTS[resultado-1];
+    }
+
+    bodyEquipo.append(bodyEquipo1);
+    bodyEquipo.append(bodyResult);
+    bodyEquipo.append(bodyEquipo2);
+    bodyPartida.append(bodyEquipo);
+
+    bodyEquipo1.hover(function() {
+      $('.' + stylePlayer1).css('background-color', '#171d2f');
+    }, function() {
+      // on mouseout, reset the background colour
+      $('.' + stylePlayer1).css('background-color', 'transparent');
+    });
+
+    bodyEquipo2.hover(function() {
+      $('.' + stylePlayer2).css('background-color', '#171d2f');
+    }, function() {
+      // on mouseout, reset the background colour
+      $('.' + stylePlayer2).css('background-color', 'transparent');
+    });
+  }
+
+  $("#contenedorPartidas").append(titulo);
+  $("#contenedorPartidas").append(bodyPartida);
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 

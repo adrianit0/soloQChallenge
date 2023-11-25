@@ -28,6 +28,7 @@ const reglamentos = [
             "La pareja de jugadores que queden primero en cada partida conseguirán 5 puntos cada uno, los segundos 3 puntos, los terceros 1 punto.",
             "Los puntos le servirá a cada jugador para clasificarse en la tabla de puntuación.",
             "Tras el Septimo partido, la clasificación será el orden en orden ascendente de jugadores con más puntos.",
+            "En caso de empate, <b>el jugador con menos elo</b> tendrá prioridad frente al que tiene más.",
             "Los premios se incluirán en el popup de premios",
             "Las partidas podrán jugarse los 7 el mismo día, o separarse en 2 o varios días, siempre intentando favorecer el horario de la mayoría de jugadores.",
             "Si un jugador no se presenta al torneo sin motivo alguno quedará excluido para futuros torneos de este estilo.",
