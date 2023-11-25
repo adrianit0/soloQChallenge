@@ -250,10 +250,60 @@ h1 {
     border-top-color: red;
 }
 
+.arena-game-blocked-card {
+    height: 64px;
+    width: 95%;
+    margin: 4px auto;
+    padding: 4px;
+}
+
+.arena-team-blocked-card-left {
+    width: 35%;
+    height: 60px;
+    float: left;
+    display: block;
+    background-image: linear-gradient(to right, #283252, rgba(0, 0, 0, 0));
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(to right, gray, rgba(0, 0, 0, 0))1;
+    border-radius: 8px;
+}
+
+.arena-team-blocked-card-center {
+    width: 60px;
+    height: inherit;
+    display: block;
+    margin: auto;
+}
+
+.arena-team-blocked-card-center i {
+    width: 60px;
+    height: 60px;
+    font-size: 60px;
+    color:  lightgray;
+    vertical-align: center;
+}
+
+.arena-team-blocked-card-right {
+    width: 35%;
+    height: inherit;
+    float: right;
+    display: block;
+    background-image: linear-gradient(to left, #283252, rgba(0, 0, 0, 0));
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-image: linear-gradient(to left, gray, rgba(0, 0, 0, 0))1;
+    border-radius: 8px;
+}
+
+
 
 .labelPuntuacion {
     color: lightgreen;
     font-size: 12px;
     line-height: 0px;
     font-weight: bold;
+
 }
