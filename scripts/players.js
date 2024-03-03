@@ -3,8 +3,6 @@ import { recuperarJugadoresArena } from "./llamadasAjax.js";
 
 const players = [];
 
-recuperarJugadoresArena([], players);
-
 // Lista de reglas para el soloQChallenge
 const normas = [
 

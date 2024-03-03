@@ -1,9 +1,11 @@
 
-let debug = false;
+  let debug = false;
 
-export function translateRank(rank) {
+  export function translateRank(rank) {
     if (rank === "DIAMOND")
       return "Diamante";
+    if (rank === "EMERALD")
+      return "Esmeralda";
     if (rank === "PLATINUM")
       return "Platino";
     if (rank === "GOLD")
@@ -16,6 +18,25 @@ export function translateRank(rank) {
       return "Hierro";
     return "Unranked";
   }
+
+  export function translateRankImg(rank) {
+      var root = "Rank=";
+      if (rank === "DIAMOND")
+        return root + "Diamond.png";
+      if (rank === "EMERALD")
+        return root + "Emerald.png";
+      if (rank === "PLATINUM")
+        return root + "Platinum.png";
+      if (rank === "GOLD")
+        return root + "Gold.png";
+      if (rank === "SILVER")
+        return root + "Silver.png";
+      if (rank === "BRONZE")
+        return root + "Bronze.png";
+      if (rank === "IRON")
+        return root + "Iron.png";
+      return "Unranked_.png";
+    }
   
   export function returnValue(soloQData, player) {
     let points = 0;
@@ -27,6 +48,8 @@ export function translateRank(rank) {
     }
   
     if (tier === "DIAMOND")
+      points += 700000;
+    if (tier === "EMERALD")
       points += 600000;
     if (tier === "PLATINUM")
       points += 500000;

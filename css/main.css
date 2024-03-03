@@ -18659,7 +18659,6 @@ body.is-curved {
 
 .view-wrapper {
 	position: relative;
-	min-height: 100vh;
 	width: calc(100% - 80px);
 	padding: 0 0 60px;
 	margin-left: 80px;

@@ -3,7 +3,7 @@ import { getPlayers } from "./players.js";
 import { recuperarJugadoresSoloQChallenge, recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
 import { setHeader } from "./header.js";
 import { getImgUrl } from "./config.js";
-import { console, returnValue, translateRank } from './utilidades.js';
+import { console, returnValue, translateRank, translateRankImg } from './utilidades.js';
 
 // Colecciones
 let debug = false;
@@ -76,6 +76,7 @@ function añadirFilaTabla(player) {
   const games = player.data.rankedSelected.wins + player.data.rankedSelected.losses;
   const percentaje = games === 0 ? 0 : Math.round(player.data.rankedSelected.wins/games*100);
   const translatedRank = translateRank(player.data.rankedSelected.tier);
+  const imgRank = translateRankImg(player.data.rankedSelected.tier);
   const smurf = player.smurf ? "high" : "low";
   const smurfText = player.smurf ? "Es una cuenta Smurf" : "No es una cuenta Smurf";
   let fila = '<tr>' +
@@ -88,7 +89,7 @@ function añadirFilaTabla(player) {
                 '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="' + getImgUrl(player.data.profileIconId) + '"> ' + player.accountName +
                 '</td>' +
                 '<td>' +
-                '  <img style="vertical-align: middle; height:30px;border-radius:30px" src="images/lol/' + translatedRank + '_' + player.data.rankedSelected.rank + '.png">' +
+                '  <img style="vertical-align: middle; height:30px;border-radius:30px" src="images/lol/' + imgRank + '">' +
                 '  <b>' + translatedRank + ' ' + player.data.rankedSelected.rank + ' </b> (' + player.data.rankedSelected.leaguePoints + ' LP)' +
                 '</td>' +
                 '<td>' + games + '</td>' +

@@ -4,15 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title> Discord SoloQChallenge </title>
-    <script type="module" src="scripts/scriptsArena.js"></script>
+    <script type="module" src="scripts/scriptsSoloQ.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="dist/jquery.bracket.min.js"></script>
-
     <link rel="icon" type="image/png" href="images/soloq-logotipo1.png">
     <link rel="stylesheet" href="css/main.css?v=18">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="dist/jquery.bracket.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="is-dark">
     <div id="huro-app" class="app-wrapper">
@@ -51,7 +48,7 @@
           </div>
           <div class="center">
             <div id="webapp-navbar-menu" class="centered-links">
-              <!-- Aqui va el menu -->
+              
             </div>
           </div>
           <div class="right">
@@ -67,20 +64,19 @@
               <div class="column is-12">
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                   <ul>
-                    <li><a><span id="quantityPlayers">8 jugadores</span></a></li>
-                    <li><a><span>Liga de las Arenas</span></a></li>
+                    <li><a><span id="quantityPlayers">10 jugadores</span></a></li>
+                    <li><a><span>Liga Provisional</span></a></li>
                     <li><a><span>Liga de las Leyendas</span></a></li>
-                    <li><a><span>??/12/2023</span></a></li>
+                    <li><a><span>11/01/2023 17:00 - 11/02/2023 23:59</span></a></li>
                   </ul>
                 </nav>
               </div>
               <!-- SoloQ - Flex -->
               <div class="basic-card botones-cola">
-                <!-- <button id="boton-izquierdo" class="column is-5 boton-cola izquierda selected">Solo</button>
-                <button id="boton-derecho" class="column is-5 boton-cola derecha">Flex</button> -->
+                <button id="boton-izquierdo" class="column is-5 boton-cola izquierda selected">Solo</button>
+                <button id="boton-derecho" class="column is-5 boton-cola derecha">Flex</button>
                 <div style="width: 100%;">
-                  <button id="boton-normas" class="normas"> Normas </button>
-                  <button id="boton-premio" class="normas"> Premios </button>
+                  <button id="boton-normas" class="column is-5 boton-cola normas" style="display: none"> Normas </button>
                 </div>
               </div>
               <!-- Clasificacion -->
@@ -92,10 +88,13 @@
                       <tr>
                         <th style="width: 20px;">Posición</th>
                         <th style="width: 162px;">Jugador</th>
+                        <th style="width: 36px;">Rol</th>
                         <th style="width: 192px;">Cuenta</th>
+                        <th style="width: 192px;">Elo</th>
                         <th style="width: 72px;">Partidas</th>
-                        <th style="width: 72px;">Posición Media</th>
-                        <th style="width: 72px;">Puntos</th>
+                        <th style="width: 72px;">Ganadas</th>
+                        <th style="width: 72px;">Perdidas</th>
+                        <th style="width: 68px;">Winrate</th>
                         <th style="width: 120px;">Stats</th>
                       </tr>
                     </thead>
@@ -105,50 +104,39 @@
                   </table>
                 </div>
               </div>
-
-              <!-- Equipos -->
-              <div class="column is-12">
-                <h1>Equipos</h1>
-              </div>
-              <div class="basic-card footer-card" id="contenedorPartidas">
-                <!-- Aquí van las partidas -->
-              </div>
-
               <!-- Footer -->
               <div id="webapp-footer" class="basic-card">
                 <!-- Aquí va el footer -->
               </div>
               <!-- Popup -->
               <div id="normas-modal" class="modal h-modal">
-                <div id="fondo-cerrar-modal" class="modal-background h-modal-close fondo-cerrar-modal"></div>
-                <div class="modal-content">
-                  <div class="modal-card">
-                    <header class="modal-card-head">
-                      <h3 id="popupReglasTitulo">Normas</h3>
-                      <button id="boton-equis-modal" class="h-modal-close ml-auto boton-equis-modal" aria-label="close">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                      </button>
-                    </header>
-                    <div class="modal-card-body">
+                <div id="fondo-cerrar-modal" class="modal-background h-modal-close"></div>
+                  <div class="modal-content">
+                    <div class="modal-card">
+                      <header class="modal-card-head">
+                        <h3>Normas</h3>
+                        <button id="boton-equis-modal" class="h-modal-close ml-auto" aria-label="close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                      </header>
+                      <div class="modal-card-body">
                       <div class="inner-content">
-                        <div>
-                          <div class="placeholder-content">
+                      <div>
+                        <div class="placeholder-content">
+                          <center>
                             <!-- LISTA DE NORMAS -->
-                            <ul id="popupReglasNormas" style="color: white">
-                              <li>Prueba</li>
-                              <li>Prueba 2</li>
-                            </ul>
+                            <p> </p>
+                          </center>
                           </div>
                         </div>
                       </div>
-                      <div class="is-centered">
-                        <a id="boton-cerrar-modal" class="modal-button boton-cerrar-modal">Cerrar</a>
-                      </div>
+                    </div>
+                    <div class="modal-card-foot is-centered">
+                      <a id="boton-cerrar-modal" class="button h-button is-danger is-rounded h-modal-close">Cerrar</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Fin Popup de reglas -->
             </div>
           </div>
         </div>

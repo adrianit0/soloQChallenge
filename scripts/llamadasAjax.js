@@ -2,6 +2,10 @@ import { getPlayerSoloQChallengeList, getPlayerDuoQChallengeList } from "./playe
 
 const traerDelServer = true;
 
+export function recuperarTorneos () {
+    return fetch("https://api.npoint.io/542223354cbc75d05d11");
+}
+
 export function recuperarJugadoresSoloQChallenge (players) {
   let promise = null;
   if (!traerDelServer) {
@@ -9,7 +13,7 @@ export function recuperarJugadoresSoloQChallenge (players) {
       resolve(getPlayerSoloQChallengeList());
     });
   } else {
-    promise = fetch("https://api.npoint.io/158f7490c25f188a79b0")
+    promise = fetch("https://api.npoint.io/f5752e1372094794278c")
       .then((response) => response.json());
   }
 
