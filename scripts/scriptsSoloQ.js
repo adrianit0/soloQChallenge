@@ -83,7 +83,9 @@ function añadirFilaTabla(player) {
                 '<td class="sorting_1">' + posicion + '</td>' +
                 '<td> ' + player.name + ' </td>' +
                 '<td>' +
-                '  <img title="' + smurfText + '" style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src=" images/' + player.lane + '_' + smurf + '.png">' +
+                '  <img title="' + smurfText + '" style="vertical-align: middle; height:25px;width:25px;border-radius:30px" src=" images/' + player.lane + '_' + smurf + '.png">' +
+                ((player.lane2 != null) ?
+                    '  <img title="' + smurfText + '" style="vertical-align: middle; height:25px;width:25px;border-radius:30px" src=" images/' + player.lane2 + '_' + smurf + '.png">' : "") +
                 '</td>' +
                 '<td>' +
                 '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="' + getImgUrl(player.data.profileIconId) + '"> ' + player.accountName +
@@ -102,8 +104,9 @@ function añadirFilaTabla(player) {
                 '<td>' + percentaje + '%</td>' +
                 '<td>' +
                 '  <b>' +
-                '    <a href="https://euw.op.gg/summoner/userName=' + player.accountName + '" target="_blank" style="color:#5383e8;">OP.GG</a>' +
-                '    <a href="https://blitz.gg/lol/profile/euw1/' + player.accountName + '" target="_blank" style="color:#5383e8; margin-left: 8px;">BLITZ</a>' +
+                '    <a href="https://euw.op.gg/summoner/userName=' + player.accountName + "-" + player.tagLine + '" target="_blank" style="color:#5383e8;">OP.GG</a>' +
+                '    <a href="https://blitz.gg/lol/profile/euw1/' + player.accountName + "-" + player.tagLine + '" target="_blank" style="color:#5383e8; margin-left: 8px;">BLITZ</a>' +
+                '    <a href="https://mobalytics.gg/lol/profile/euw/' + player.accountName + "-" + player.tagLine + '/overview" target="_blank" style="color:#5383e8; margin-left: 8px;">Mobalytics</a>' +
                 '  </b>' +
                 '</td>' +
               '</tr>';

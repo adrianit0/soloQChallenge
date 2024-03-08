@@ -305,5 +305,8 @@ h1 {
     font-size: 12px;
     line-height: 0px;
     font-weight: bold;
+}
 
+#tablaclasificacion td {
+    font-size: 14px;
 }
