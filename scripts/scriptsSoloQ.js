@@ -1,6 +1,6 @@
 
 import { getPlayers } from "./players.js";
-import { recuperarJugadoresSoloQChallenge, recuperarInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
+import { recuperarJugadoresSoloQChallenge, recuperarDatosInvocador, seleccionarLigaJugador } from "./llamadasAjax.js";
 import { setHeader } from "./header.js";
 import { getImgUrl } from "./config.js";
 import { console, returnValue, translateRank, translateRankImg } from './utilidades.js';
@@ -37,7 +37,7 @@ function inicializar() {
 
   promise.then((res) => {
     players.forEach ( p => {
-      recuperarInvocador(p, fetchs);
+      recuperarDatosInvocador(p, fetchs);
     });
 
     const allData = Promise.all(fetchs);
@@ -72,7 +72,8 @@ function inicializar() {
 }
 
 function añadirFilaTabla(player) {
-
+  const playerName = player.accountName + '#' + player.tagLine;
+  const playerApi = player.accountName + '-' + player.tagLine;
   const games = player.data.rankedSelected.wins + player.data.rankedSelected.losses;
   const percentaje = games === 0 ? 0 : Math.round(player.data.rankedSelected.wins/games*100);
   const translatedRank = translateRank(player.data.rankedSelected.tier);
@@ -88,7 +89,10 @@ function añadirFilaTabla(player) {
                     '  <img title="' + smurfText + '" style="vertical-align: middle; height:25px;width:25px;border-radius:30px" src=" images/' + player.lane2 + '_' + smurf + '.png">' : "") +
                 '</td>' +
                 '<td>' +
-                '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="' + getImgUrl(player.data.profileIconId) + '"> ' + player.accountName +
+                '  <img style="float: left; margin-right: 8px; vertical-align: middle; height:30px;width:30px;border-radius:30px" src="' + getImgUrl(player.data.profileIconId) + '"> ' +
+                ((player.alias != null) ?
+                "<p title='" + playerName + "'>" + player.alias + "<br><span style='font-size:12px'>( " + playerName + " )</span></p>" :
+                "<p title='" + playerName + "'>" + player.accountName + '#' + player.tagLine + "</p>") +
                 '</td>' +
                 '<td>' +
                 '  <img style="vertical-align: middle; height:30px;border-radius:30px" src="images/lol/' + imgRank + '">' +
@@ -104,9 +108,9 @@ function añadirFilaTabla(player) {
                 '<td>' + percentaje + '%</td>' +
                 '<td>' +
                 '  <b>' +
-                '    <a href="https://euw.op.gg/summoner/userName=' + player.accountName + "-" + player.tagLine + '" target="_blank" style="color:#5383e8;">OP.GG</a>' +
-                '    <a href="https://blitz.gg/lol/profile/euw1/' + player.accountName + "-" + player.tagLine + '" target="_blank" style="color:#5383e8; margin-left: 8px;">BLITZ</a>' +
-                '    <a href="https://mobalytics.gg/lol/profile/euw/' + player.accountName + "-" + player.tagLine + '/overview" target="_blank" style="color:#5383e8; margin-left: 8px;">Mobalytics</a>' +
+                '    <a href="https://euw.op.gg/summoner/userName=' + playerApi + '" target="_blank" style="color:#5383e8;">OP.GG</a>' +
+                '    <a href="https://blitz.gg/lol/profile/euw1/' + playerApi + '" target="_blank" style="color:#5383e8; margin-left: 8px;">BLITZ</a>' +
+                '    <a href="https://mobalytics.gg/lol/profile/euw/' + playerApi + '/overview" target="_blank" style="color:#5383e8; margin-left: 8px;">Mobalytics</a>' +
                 '  </b>' +
                 '</td>' +
               '</tr>';

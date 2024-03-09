@@ -62,13 +62,13 @@
     if (tier === "IRON")
       points += 100000;
   
-    if (rank === "I")
+    if (rank === "I" || rank == 1)
       points += 40100;
-    if (rank === "II")
+    if (rank === "II" || rank == 2)
       points += 30100;
-    if (rank === "III")
+    if (rank === "III" || rank == 3)
       points += 20100;
-    if (rank === "IV")
+    if (rank === "IV" || rank == 4)
       points += 10100;
   
     points += soloQData.leaguePoints * 100;

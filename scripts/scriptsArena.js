@@ -96,7 +96,7 @@ function añadirFilaTabla(player) {
 
   let fila = (baneado ? '<tr class="jugadorBaneado">' : '<tr>') +
                 '<td class="sorting_1">' + posicion + '</td>' +
-                '<td> ' + player.name + ' </td>' +
+                '<td> ' + player.name + '#' + player.tagLine + ' </td>' +
                 '<td>' +
                 '  <img style="vertical-align: middle; height:30px;width:30px;border-radius:30px" src="' + getImgUrl(player.data.profileIconId) + '"> ' + player.accountName +
                 '</td>' +
