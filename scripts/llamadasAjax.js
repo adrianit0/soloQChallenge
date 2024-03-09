@@ -1,7 +1,7 @@
 import { getPlayerSoloQChallengeList, getPlayerDuoQChallengeList } from "./playerList.js";
 
 const traerDelServer = true;
-const traerDeBlitz = true;
+const traerDeBlitz = false;
 
 export function recuperarTorneos () {
     return fetch("https://api.npoint.io/542223354cbc75d05d11");
@@ -101,7 +101,7 @@ export function recuperarInvocadorMobalytics (player, fetchs) {
     const body = '{"operationName":"LolProfilePageSummonerInfoQuery","variables":{"gameName":"' + player.accountName + '","tagLine":"' + player.tagLine + '","region":"EUW","sQueue":null,"sRole":null,"sChampion":null},"extensions":{"persistedQuery":{"version":1,"sha256Hash":"69fd82d266137c011d209634e4b09ab5a8c66d415a19676c06aa90b1ba7632fe"}}}';
     const fetched = fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
+      mode: 'no-cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
