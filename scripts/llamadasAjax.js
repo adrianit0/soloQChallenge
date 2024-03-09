@@ -1,7 +1,7 @@
 import { getPlayerSoloQChallengeList, getPlayerDuoQChallengeList } from "./playerList.js";
 
 const traerDelServer = true;
-const traerDeBlitz = false;
+const traerDeBlitz = true;
 
 export function recuperarTorneos () {
     return fetch("https://api.npoint.io/542223354cbc75d05d11");
